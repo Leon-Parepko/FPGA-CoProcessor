@@ -1,3 +1,4 @@
+import javax.lang.model.type.NullType;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -10,6 +11,8 @@ import java.io.OutputStream;
 import java.nio.channels.ConnectionPendingException;
 
 import com.fazecast.jSerialComm.SerialPort;
+import com.fazecast.jSerialComm.SerialPortDataListener;
+import com.fazecast.jSerialComm.SerialPortEvent;
 
 public class Main_App extends JFrame{
     private JPanel Main_Panel;
@@ -119,7 +122,22 @@ public class Main_App extends JFrame{
             }
         });
 
-    }
+
+
+//  FUNC TO READ DATA FROM SERIAL
+
+//            CurrentPort.addDataListener(new SerialPortDataListener() {
+//                @Override
+//                public int getListeningEvents() {
+//                    return SerialPort.LISTENING_EVENT_DATA_RECEIVED;
+//                }
+//
+//                @Override
+//                public void serialEvent(SerialPortEvent event) {
+//                    textArea2.setText(" Data from serial ");
+//                }
+//            });
+        }
 
 
 
