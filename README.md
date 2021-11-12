@@ -1,11 +1,11 @@
 # FPGA-CoProcessor
 
-Основная идея заключается в реализации тензорного сопроцессора (ускорителя) на ПЛИС. Проект достаточно обширный и не факт что мы успеем его реализовать полностью в столь краткие сроки. По этому мы рассчитываем представить частичную  реализацию, выполняющую базовый математический функционал. Если коротко объяснять принцип работы, то мы передаем пакет данных (числа (тензоры) и инструкцию над ними), а ПЛИС в свою очередь передает уже результат вычислений.  
+The main idea is to implement a tensor coprocessor (accelerator) on an FPGA. The project is quite extensive and it is not a fact that we will have time to fully implement it in such a short time. For this reason, we expect to present a partial implementation that performs the basic mathematical functionality. To briefly explain the principle of operation, we transmit a data package (numbers (tensors) and instructions on them), and the FPGA transmits the result of calculations.
 
-На пока что, наши основные задачи таковы: 
-1) Реализовать обмен данными между ПЛИС и ПК.
-2) Создать программное обеспечение (для ПК) для передачи данных на ПЛИС.
-3) Реализовать базовые математические операции над простыми числами в самой ПЛИС (в перспективе над тензорами).
-4) Создать собственный набор исполняемых инструкций в пределах протокола обмена данных.
+For now, our main tasks are as follows:
+1) Implement data exchange between FPGA and PC.
+2) Create software (for PC) to transfer data to the FPGA.
+3) Implement basic mathematical operations on prime numbers in the FPGA itself (in the future on tensors).
+4) Create our own set of executable instructions within the data exchange protocol.
 
-Основной целью проекта является скорее исследовательская работа, нежели коммерческое применение. Тем не менее, в дальнейшей перспективе, данный проект может использоваться как небольшой и достаточно эффективный аппаратный ускоритель вычислений в системах машинного обучения.
+The main goal of the project is research rather than commercial application. Nevertheless, in the future, this project can be used as a small and fairly effective hardware accelerator for computing in machine learning systems.
