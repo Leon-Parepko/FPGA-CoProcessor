@@ -1,6 +1,7 @@
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;
 import com.fazecast.jSerialComm.SerialPortEvent;
+import com.fazecast.jSerialComm.SerialPortInvalidPortException;
 
 import javax.swing.*;
 import javax.swing.event.PopupMenuEvent;
@@ -8,24 +9,39 @@ import javax.swing.event.PopupMenuListener;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.stream.Collectors;
 
 public class MainAppFrame extends JFrame {
     private JPanel MainPanel;
-    private JButton sendButton;
-    private JComboBox<String> PortsComboBox;
-    private JComboBox<Integer> DataBits_comboBox;
-    private JComboBox<Integer> StopBits_comboBox;
+
+    private JLabel Title;
+    private JLabel StatusLabel;
+    private JLabel StatusMessage;
+    private JLabel OutputLabel;
+
+    private JTextArea InputText;
+    private JTextArea OutputText;
+
     private JSlider BitrateSlider;
-    private JTextArea inputArea;
-    private JButton openPortButton;
-    private JTextArea textArea2;
-    private JLabel BitTrade_Text;
-    private JLabel Status;
+    private JComboBox comboBox1;
+    private JComboBox comboBox2;
+    private JComboBox comboBox3;
+    private JComboBox<String> SerialPortComboBox;
 
-    SerialPort[] AvailablePorts;
-    SerialPort currentPort = null;
+    private JButton SendMessage;
+    private JButton OpenButton;
+    private JButton ClearButton;
+    private JLabel BitrateLabel;
 
-    int bitrateIndex;
+    SerialPort CurrentPort = null;
+
+    int bitrateIndex = 8;
+
+    void trace(String msg) {
+        StatusMessage.setText(msg);
+    }
 
     public MainAppFrame(String title) {
         super(title);
@@ -33,85 +49,138 @@ public class MainAppFrame extends JFrame {
         this.setContentPane(MainPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        AvailablePorts = SerialPort.getCommPorts();
-        for (SerialPort s : AvailablePorts) {
-            PortsComboBox.addItem(s.getSystemPortName() + ": " + s);
-        }
+        OpenButton.setEnabled(false);
 
-        BitrateSlider.addChangeListener(e -> {
-            bitrateIndex = BitrateSlider.getValue();
-            BitTrade_Text.setText(String.valueOf(bitrateIndex * 1200));
-
-            currentPort.setBaudRate(bitrateIndex * 1200);
-        });
-
-        openPortButton.addActionListener(e -> {
-            currentPort.openPort();
-        });
-
-        PortsComboBox.addPopupMenuListener(new PopupMenuListener() {
+        SerialPortComboBox.addItem("None");
+        SerialPortComboBox.addPopupMenuListener(new PopupMenuListener() {
             @Override
             public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
-                PortsComboBox.removeAllItems();
+                HashSet<String> serialPortHashSet = Arrays.stream(
+                        SerialPort.getCommPorts()).map(
+                        i -> i.getSystemPortName() + ": " + i.getPortDescription()
+                ).collect(Collectors.toCollection(HashSet::new)
+                );
 
-                AvailablePorts = SerialPort.getCommPorts();
-                for (SerialPort s : AvailablePorts) {
-                    PortsComboBox.addItem(s.getSystemPortName() + ": " + s);
+                int comboBoxSize = SerialPortComboBox.getItemCount();
+                for (int i = 1; i < comboBoxSize; i++) {
+                    String item = SerialPortComboBox.getItemAt(i);
+
+                    if (serialPortHashSet.contains(item)) {
+                        serialPortHashSet.remove(item);
+                    } else {
+                        SerialPortComboBox.removeItem(item);
+                        --comboBoxSize;
+                        --i;
+                    }
+                }
+
+                for (String s : serialPortHashSet) {
+                    SerialPortComboBox.addItem(s);
                 }
             }
 
             @Override
             public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
-
             }
 
             @Override
             public void popupMenuCanceled(PopupMenuEvent e) {
-
             }
         });
 
-        PortsComboBox.addActionListener(e -> {
-            // Remove data listener from previous port
-            if (currentPort != null) {
-                currentPort.removeDataListener();
-                currentPort.closePort();
+        SerialPortComboBox.addActionListener(e -> {
+            Object item = SerialPortComboBox.getSelectedItem();
+
+            // Reset previous port connection
+            if (CurrentPort != null) {
+                CurrentPort.removeDataListener();
+                CurrentPort.closePort();
+
+                OpenButton.setEnabled(false);
+                OpenButton.setText("---");
+
+                trace(CurrentPort.getSystemPortName() + " connection closed!");
             }
 
-            int position = PortsComboBox.getSelectedIndex();
-            if (position != -1) {
-                currentPort = AvailablePorts[position];
+            if (item != null) {
+                String port = item.toString().split(":")[0];
 
-                currentPort.addDataListener(new SerialPortDataListener() {
-                    @Override
-                    public int getListeningEvents() {
-                        return SerialPort.LISTENING_EVENT_DATA_RECEIVED;
-                    }
+                if (port != null && !port.equals("None")) {
+                    try {
+                        CurrentPort = SerialPort.getCommPort(port);
 
-                    @Override
-                    public void serialEvent(SerialPortEvent serialPortEvent) {
-                        byte[] incomingData = serialPortEvent.getReceivedData();
-                        System.out.println(new String(incomingData));
+                        CurrentPort.addDataListener(new SerialPortDataListener() {
+                            @Override
+                            public int getListeningEvents() {
+                                return SerialPort.LISTENING_EVENT_DATA_RECEIVED;
+                            }
+
+                            @Override
+                            public void serialEvent(SerialPortEvent serialPortEvent) {
+                                byte[] incomingData = serialPortEvent.getReceivedData();
+                                OutputText.append(new String(incomingData));
+                            }
+                        });
+
+                        OpenButton.setEnabled(true);
+                        OpenButton.setText("Open " + port + " port");
+                    } catch (SerialPortInvalidPortException ignored) {
+                        trace("Invalid port");
                     }
-                });
+                }
             }
         });
 
-        sendButton.addActionListener(e -> {
+        BitrateSlider.addChangeListener(e -> {
+            bitrateIndex = BitrateSlider.getValue();
+            BitrateLabel.setText(String.valueOf(bitrateIndex * 1200));
+
+            if (CurrentPort != null) {
+                CurrentPort.setBaudRate(bitrateIndex * 1200);
+            }
+        });
+
+        SendMessage.addActionListener(e -> {
             try {
-                OutputStream outputStream = currentPort.getOutputStream();
-                outputStream.write(inputArea.getText().getBytes(StandardCharsets.UTF_8));
+                OutputStream outputStream = CurrentPort.getOutputStream();
+                outputStream.write(InputText.getText().getBytes(StandardCharsets.UTF_8));
             } catch (ArrayIndexOutOfBoundsException | IOException a) {
-                Status.setText("Could not send Data!");
+                trace("Could not send data!");
             } catch (NullPointerException a) {
-                Status.setText("No ports available!");
+                trace("No ports available!");
             }
         });
+
+        OpenButton.addActionListener(e -> {
+            String port = CurrentPort.getSystemPortName();
+
+            if (CurrentPort.isOpen()) {
+                if (CurrentPort.closePort()) {
+                    trace("Port " + port + " closed!");
+                    OpenButton.setText("Open " + port + " port");
+                } else {
+                    trace("Failed to close " + port + " port!");
+                    OpenButton.setText("Close " + port + " port");
+                }
+            } else {
+                if (CurrentPort.openPort()) {
+                    CurrentPort.setBaudRate(bitrateIndex * 1200);
+
+                    trace("Port " + port + " opened!");
+                    OpenButton.setText("Close " + port + " port");
+                } else {
+                    trace("Failed to open " + port + " port!");
+                    OpenButton.setText("Open " + port + " port");
+                }
+            }
+        });
+
+        ClearButton.addActionListener(e -> OutputText.setText(""));
     }
 
     public static void main(String[] args) {
         JFrame appFrame = new MainAppFrame("COM-Port Communication App");
-        appFrame.setSize(500, 500);
+        appFrame.setSize(960, 540);
         appFrame.setVisible(true);
     }
 }
