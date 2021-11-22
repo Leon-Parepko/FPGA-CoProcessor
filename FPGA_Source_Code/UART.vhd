@@ -127,7 +127,6 @@ begin
 						end if;
 	
 	
--- Sending UART message on tx	
 -- A seperate counter is used to send the character stored in array at a rate of 9600 bits/sec.
 						
 						if(process_out_flag='1' and process_counter_2=0) then
