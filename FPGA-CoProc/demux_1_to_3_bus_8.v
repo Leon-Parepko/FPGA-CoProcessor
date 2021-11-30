@@ -1,4 +1,3 @@
-
 module demux_1_to_3_bus_8(in, sel, clk, out1, out2, out3);
 
 	input [7:0] in;
