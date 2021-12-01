@@ -21,7 +21,7 @@ https://fpgasoftware.intel.com/eula.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 200 96)
+	(rect 16 16 224 96)
 	(text "uart_tx" (rect 5 0 33 12)(font "Arial" ))
 	(text "inst" (rect 8 64 20 76)(font "Arial" ))
 	(port
@@ -39,26 +39,26 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 0 48)(pt 16 48)(line_width 1))
 	)
 	(port
-		(pt 184 32)
+		(pt 208 32)
 		(output)
 		(text "o_rx_done" (rect 0 0 43 12)(font "Arial" ))
-		(text "o_rx_done" (rect 120 27 163 39)(font "Arial" ))
-		(line (pt 184 32)(pt 168 32)(line_width 1))
+		(text "o_rx_done" (rect 144 27 187 39)(font "Arial" ))
+		(line (pt 208 32)(pt 192 32)(line_width 1))
 	)
 	(port
-		(pt 184 48)
+		(pt 208 48)
 		(output)
-		(text "o_rx_data" (rect 0 0 41 12)(font "Arial" ))
-		(text "o_rx_data" (rect 122 43 163 55)(font "Arial" ))
-		(line (pt 184 48)(pt 168 48)(line_width 1))
+		(text "o_rx_byte[7..0]" (rect 0 0 62 12)(font "Arial" ))
+		(text "o_rx_byte[7..0]" (rect 125 43 187 55)(font "Arial" ))
+		(line (pt 208 48)(pt 192 48)(line_width 3))
 	)
 	(parameter
-		"DATA_WIDTH"
-		"24"
+		"clks_per_bit"
+		"87"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 168 64)(line_width 1))
+		(rectangle (rect 16 16 192 64)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 200 -64 300 16))
+	(annotation_block (parameter)(rect 224 -64 324 16))
 )
