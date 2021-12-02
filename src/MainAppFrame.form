@@ -159,11 +159,11 @@
             </constraints>
             <properties>
               <inverted value="false"/>
-              <maximum value="9"/>
+              <maximum value="12"/>
               <paintLabels value="false"/>
               <paintTicks value="true"/>
               <snapToTicks value="true"/>
-              <value value="8"/>
+              <value value="4"/>
             </properties>
           </component>
           <hspacer id="7f203">

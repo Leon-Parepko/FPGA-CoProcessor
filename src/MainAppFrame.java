@@ -1,3 +1,4 @@
+import Compiler.Compiler;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;
 import com.fazecast.jSerialComm.SerialPortEvent;
@@ -12,6 +13,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.stream.Collectors;
+import Compiler.*;
+
 
 public class MainAppFrame extends JFrame {
     private JPanel MainPanel;
@@ -37,7 +40,7 @@ public class MainAppFrame extends JFrame {
 
     SerialPort CurrentPort = null;
 
-    int bitrateIndex = 8;
+    int bitrateIndex = 4;
 
     void trace(String msg) {
         StatusMessage.setText(msg);
@@ -45,6 +48,8 @@ public class MainAppFrame extends JFrame {
 
     public MainAppFrame(String title) {
         super(title);
+
+        Compiler Compiler = new Compiler();
 
         this.setContentPane(MainPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -132,17 +137,27 @@ public class MainAppFrame extends JFrame {
         });
 
         BitrateSlider.addChangeListener(e -> {
+            int bitrateValue;
             bitrateIndex = BitrateSlider.getValue();
-            BitrateLabel.setText(String.valueOf(bitrateIndex * 1200));
+
+            if (bitrateIndex == 0){bitrateValue = 300;}
+            else if (bitrateIndex >= 1 && bitrateIndex <= 6) {bitrateValue = (int) (Math.pow(2, bitrateIndex + 1) * 300);}
+            else if (bitrateIndex == 7) {bitrateValue = 192 * 300;}
+            else if (bitrateIndex == 8) {bitrateValue = 74880;}
+            else if (bitrateIndex >= 9 && bitrateIndex <= 12) {bitrateValue = (384 * (bitrateIndex - 8) * 300);}
+            else {bitrateValue = 9600;}
+
+            BitrateLabel.setText(String.valueOf(bitrateValue));
 
             if (CurrentPort != null) {
-                CurrentPort.setBaudRate(bitrateIndex * 1200);
+                CurrentPort.setBaudRate(bitrateValue);
             }
         });
 
         SendMessage.addActionListener(e -> {
             try {
                 OutputStream outputStream = CurrentPort.getOutputStream();
+                Compiler.Compile(InputText.getText());
                 outputStream.write(InputText.getText().getBytes(StandardCharsets.UTF_8));
             } catch (ArrayIndexOutOfBoundsException | IOException a) {
                 trace("Could not send data!");

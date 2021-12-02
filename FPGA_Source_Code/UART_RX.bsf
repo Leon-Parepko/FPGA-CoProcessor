@@ -21,52 +21,49 @@ https://fpgasoftware.intel.com/eula.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 248 128)
-	(text "UART" (rect 5 0 34 12)(font "Arial" ))
-	(text "inst" (rect 8 96 20 108)(font "Arial" ))
+	(rect 16 16 224 96)
+	(text "UART_RX" (rect 5 0 54 12)(font "Arial" ))
+	(text "inst" (rect 8 64 20 76)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
-		(text "clk" (rect 0 0 10 12)(font "Arial" ))
-		(text "clk" (rect 21 27 31 39)(font "Arial" ))
+		(text "i_rx_serial" (rect 0 0 41 12)(font "Arial" ))
+		(text "i_rx_serial" (rect 21 27 62 39)(font "Arial" ))
 		(line (pt 0 32)(pt 16 32)(line_width 1))
 	)
 	(port
 		(pt 0 48)
 		(input)
-		(text "process_in[9..0]" (rect 0 0 63 12)(font "Arial" ))
-		(text "process_in[9..0]" (rect 21 43 84 55)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48)(line_width 3))
+		(text "i_clk" (rect 0 0 17 12)(font "Arial" ))
+		(text "i_clk" (rect 21 43 38 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 1))
 	)
 	(port
-		(pt 0 64)
-		(input)
-		(text "rx" (rect 0 0 8 12)(font "Arial" ))
-		(text "rx" (rect 21 59 29 71)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64)(line_width 1))
-	)
-	(port
-		(pt 232 32)
+		(pt 208 32)
 		(output)
-		(text "process_out[9..0]" (rect 0 0 69 12)(font "Arial" ))
-		(text "process_out[9..0]" (rect 142 27 211 39)(font "Arial" ))
-		(line (pt 232 32)(pt 216 32)(line_width 3))
+		(text "o_rx_done" (rect 0 0 43 12)(font "Arial" ))
+		(text "o_rx_done" (rect 144 27 187 39)(font "Arial" ))
+		(line (pt 208 32)(pt 192 32)(line_width 1))
 	)
 	(port
-		(pt 232 48)
+		(pt 208 48)
 		(output)
-		(text "tx" (rect 0 0 7 12)(font "Arial" ))
-		(text "tx" (rect 204 43 211 55)(font "Arial" ))
-		(line (pt 232 48)(pt 216 48)(line_width 1))
+		(text "o_rx_byte[7..0]" (rect 0 0 62 12)(font "Arial" ))
+		(text "o_rx_byte[7..0]" (rect 125 43 187 55)(font "Arial" ))
+		(line (pt 208 48)(pt 192 48)(line_width 3))
 	)
-	(port
-		(pt 232 64)
-		(output)
-		(text "LED_rx" (rect 0 0 34 12)(font "Arial" ))
-		(text "LED_rx" (rect 177 59 211 71)(font "Arial" ))
-		(line (pt 232 64)(pt 216 64)(line_width 1))
-	)
+	(parameter
+		"CLOCK_FREQUENCY"
+		"50000000"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"BAUD_RATE"
+		"115200"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 216 96)(line_width 1))
+		(rectangle (rect 16 16 192 64)(line_width 1))
 	)
+	(annotation_block (parameter)(rect 224 -64 324 16))
 )

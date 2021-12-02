@@ -1,0 +1,317 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+*/
+(header "graphic" (version "1.4"))
+(pin
+	(input)
+	(rect 896 1616 1064 1632)
+	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
+	(text "In_rx" (rect 5 0 27 17)(font "Intel Clear" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect 816 1632 880 1656))
+)
+(pin
+	(input)
+	(rect 896 1704 1064 1720)
+	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
+	(text "In_clk" (rect 5 0 34 12)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect 800 1720 864 1744))
+)
+(pin
+	(input)
+	(rect 816 1536 984 1552)
+	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
+	(text "Reset" (rect 5 0 34 12)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect 736 1512 792 1536))
+)
+(pin
+	(output)
+	(rect 1680 1656 1856 1672)
+	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
+	(text "Out_rx" (rect 90 0 121 17)(font "Intel Clear" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+	(annotation_block (location)(rect 1872 1672 1928 1696))
+)
+(pin
+	(output)
+	(rect 1432 1472 1608 1488)
+	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
+	(text "Led_1" (rect 90 0 119 12)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+	(annotation_block (location)(rect 1640 1448 1704 1472))
+)
+(pin
+	(output)
+	(rect 1432 1520 1608 1536)
+	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
+	(text "Led_2" (rect 90 0 119 17)(font "Intel Clear" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+	(annotation_block (location)(rect 1632 1512 1696 1536))
+)
+(symbol
+	(rect 1080 1616 1288 1696)
+	(text "UART_RX" (rect 5 0 54 12)(font "Arial" ))
+	(text "inst" (rect 8 64 25 76)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "i_rx_serial" (rect 0 0 49 12)(font "Arial" ))
+		(text "i_rx_serial" (rect 21 27 70 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "i_clk" (rect 0 0 22 12)(font "Arial" ))
+		(text "i_clk" (rect 21 43 43 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 208 32)
+		(output)
+		(text "o_rx_done" (rect 0 0 50 12)(font "Arial" ))
+		(text "o_rx_done" (rect 145 27 195 39)(font "Arial" ))
+		(line (pt 208 32)(pt 192 32))
+	)
+	(port
+		(pt 208 48)
+		(output)
+		(text "o_rx_byte[7..0]" (rect 0 0 75 12)(font "Arial" ))
+		(text "o_rx_byte[7..0]" (rect 124 43 199 55)(font "Arial" ))
+		(line (pt 208 48)(pt 192 48)(line_width 3))
+	)
+	(parameter
+		"CLOCK_FREQUENCY"
+		"10000000"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"BAUD_RATE"
+		"115200"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 192 64))
+	)
+	(annotation_block (parameter)(rect 1072 1544 1321 1601))
+)
+(symbol
+	(rect 1416 1600 1632 1712)
+	(text "UART_TX" (rect 5 0 52 12)(font "Arial" ))
+	(text "inst4" (rect 8 96 30 113)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clockIN" (rect 0 0 37 12)(font "Arial" ))
+		(text "clockIN" (rect 21 27 58 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "nTxResetIN" (rect 0 0 59 12)(font "Arial" ))
+		(text "nTxResetIN" (rect 21 43 80 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "txDataIN[7..0]" (rect 0 0 70 12)(font "Arial" ))
+		(text "txDataIN[7..0]" (rect 21 59 91 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "txLoadIN" (rect 0 0 44 12)(font "Arial" ))
+		(text "txLoadIN" (rect 21 75 65 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 216 32)
+		(output)
+		(text "txIdleOUT" (rect 0 0 49 12)(font "Arial" ))
+		(text "txIdleOUT" (rect 154 27 203 39)(font "Arial" ))
+		(line (pt 216 32)(pt 200 32))
+	)
+	(port
+		(pt 216 48)
+		(output)
+		(text "txReadyOUT" (rect 0 0 64 12)(font "Arial" ))
+		(text "txReadyOUT" (rect 141 43 205 55)(font "Arial" ))
+		(line (pt 216 48)(pt 200 48))
+	)
+	(port
+		(pt 216 64)
+		(output)
+		(text "txOUT" (rect 0 0 31 12)(font "Arial" ))
+		(text "txOUT" (rect 169 59 200 71)(font "Arial" ))
+		(line (pt 216 64)(pt 200 64))
+	)
+	(parameter
+		"CLOCK_FREQUENCY"
+		"10000000"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"BAUD_RATE"
+		"115200"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 200 96))
+	)
+	(annotation_block (parameter)(rect 1416 1536 1665 1593))
+)
+(connector
+	(pt 1080 1648)
+	(pt 1072 1648)
+)
+(connector
+	(pt 1072 1648)
+	(pt 1072 1624)
+)
+(connector
+	(pt 1072 1624)
+	(pt 1064 1624)
+)
+(connector
+	(pt 1288 1648)
+	(pt 1400 1648)
+)
+(connector
+	(pt 1080 1664)
+	(pt 1064 1664)
+)
+(connector
+	(pt 1344 1504)
+	(pt 1344 1632)
+)
+(connector
+	(pt 1040 1504)
+	(pt 1344 1504)
+)
+(connector
+	(pt 1040 1504)
+	(pt 1040 1688)
+)
+(connector
+	(pt 1040 1688)
+	(pt 1064 1688)
+)
+(connector
+	(pt 1064 1664)
+	(pt 1064 1688)
+)
+(connector
+	(pt 1064 1688)
+	(pt 1064 1712)
+)
+(connector
+	(pt 1288 1664)
+	(pt 1416 1664)
+	(bus)
+)
+(connector
+	(pt 1416 1680)
+	(pt 1400 1680)
+)
+(connector
+	(pt 1400 1680)
+	(pt 1400 1648)
+)
+(connector
+	(pt 1344 1632)
+	(pt 1416 1632)
+)
+(connector
+	(pt 1416 1648)
+	(pt 1408 1648)
+)
+(connector
+	(pt 1408 1544)
+	(pt 1408 1648)
+)
+(connector
+	(pt 1408 1544)
+	(pt 984 1544)
+)
+(connector
+	(pt 1632 1664)
+	(pt 1680 1664)
+)
+(junction (pt 1064 1688))
