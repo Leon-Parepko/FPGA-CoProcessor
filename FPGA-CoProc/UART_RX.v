@@ -7,7 +7,7 @@
 
 module UART_RX #
 (
-	parameter CLOCK_FREQUENCY = 25000000,
+	parameter CLOCK_FREQUENCY = 50_000_000,
 	parameter BAUD_RATE       = 115200
 )
 (
@@ -25,20 +25,21 @@ module UART_RX #
 
 	// FILTERING SIGNAL //
 	wire i_rx_filtered;
-	majority_filter_3 rx_filter
+	MAJORITY_FILTER_3 rx_filter
 	(
 		.i_clk(i_clk),
 		.i_rx(i_rx_serial),
 		.o_rx(i_rx_filtered)
 	);
 
-	reg [9:0] r_data = 0;
-	assign o_rx_byte[7:0] = r_data[8:1];
-	assign o_rx_done = ~r_data[0] & rx_baud_clk;
-
 	// * BAUD CLOCK GENERATOR * //
 	reg rx_baud_clk = 1'b0;
 	reg [HALF_BAUD_CLK_REG_SIZE - 1:0] r_clock_counter = 0;
+
+	reg [9:0] r_data = 0;
+	
+	assign o_rx_byte[7:0] = r_data[8:1];
+	assign o_rx_done = ~r_data[0] & i_clk & rx_baud_clk;
 	
 	always @(posedge i_clk) begin
 		if (i_rx_filtered & ~r_data[0]) begin
