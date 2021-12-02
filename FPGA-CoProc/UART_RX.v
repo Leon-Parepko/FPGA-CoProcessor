@@ -59,7 +59,7 @@ module UART_RX#
 
 		// DRIVING r_done_signal HIGH FOR ONE TICK WHEN DONE //
 		if (~r_data[0]) begin
-			if (~send_done & r_clock_counter == HALF_BAUD_CLK_REG_VALUE) begin
+			if (~r_done_signal_sent & r_clock_counter == HALF_BAUD_CLK_REG_VALUE) begin
 				r_done_signal <= 1'b1;
 				r_done_signal_sent <= 1'b1;
 			end
