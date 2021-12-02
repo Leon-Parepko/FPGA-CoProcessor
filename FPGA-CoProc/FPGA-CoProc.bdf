@@ -20,39 +20,3 @@ refer to the applicable agreement for further details, at
 https://fpgasoftware.intel.com/eula.
 */
 (header "graphic" (version "1.4"))
-(symbol
-	(rect 416 256 592 368)
-	(text "adapter_24_3x8" (rect 5 0 110 15)(font "Arial" ))
-	(text "inst1" (rect 8 96 39 115)(font "Intel Clear" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "in[23..0]" (rect 0 0 50 15)(font "Arial" ))
-		(text "in[23..0]" (rect 21 27 71 42)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32)(line_width 3))
-	)
-	(port
-		(pt 176 32)
-		(output)
-		(text "out_1[7..0]" (rect 0 0 67 15)(font "Arial" ))
-		(text "out_1[7..0]" (rect 99 27 166 42)(font "Arial" ))
-		(line (pt 176 32)(pt 160 32)(line_width 3))
-	)
-	(port
-		(pt 176 48)
-		(output)
-		(text "out_2[7..0]" (rect 0 0 67 15)(font "Arial" ))
-		(text "out_2[7..0]" (rect 99 43 166 58)(font "Arial" ))
-		(line (pt 176 48)(pt 160 48)(line_width 3))
-	)
-	(port
-		(pt 176 64)
-		(output)
-		(text "out_3[7..0]" (rect 0 0 67 15)(font "Arial" ))
-		(text "out_3[7..0]" (rect 99 59 166 74)(font "Arial" ))
-		(line (pt 176 64)(pt 160 64)(line_width 3))
-	)
-	(drawing
-		(rectangle (rect 16 16 160 96))
-	)
-)

@@ -22,7 +22,7 @@ https://fpgasoftware.intel.com/eula.
 (header "symbol" (version "1.1"))
 (symbol
 	(rect 16 16 224 96)
-	(text "uart_tx" (rect 5 0 33 12)(font "Arial" ))
+	(text "UART_RX" (rect 5 0 54 12)(font "Arial" ))
 	(text "inst" (rect 8 64 20 76)(font "Arial" ))
 	(port
 		(pt 0 32)
@@ -53,8 +53,13 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 208 48)(pt 192 48)(line_width 3))
 	)
 	(parameter
-		"clks_per_bit"
-		"87"
+		"CLOCK_FREQUENCY"
+		"25000000"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"BAUD_RATE"
+		"115200"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
