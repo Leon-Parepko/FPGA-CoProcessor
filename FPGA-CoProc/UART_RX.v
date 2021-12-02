@@ -33,16 +33,20 @@ module UART_RX#
 	);
 
 	reg [9:0] r_data = 0;
-	reg r_done = 0;
+	
+	reg r_done_signal = 0;
+	reg r_done_signal_sent = 0;
 
 	assign o_rx_byte[7:0] = r_data[8:1];
-	assign o_rx_done = r_done;
+	assign o_rx_done = r_done_signal;
 
 	// * BAUD CLOCK GENERATOR * //
 	reg rx_baud_clk = 1'b0;
 	reg [HALF_BAUD_CLK_REG_SIZE - 1:0] r_clock_counter = 0;
 	
 	always @(posedge i_clk) begin
+		r_done_signal <= 0;
+
 		if (i_rx_filtered & ~r_data[0]) begin
 			r_clock_counter <= HALF_BAUD_CLK_REG_VALUE;
 			rx_baud_clk <= 0;
@@ -52,13 +56,15 @@ module UART_RX#
 		end else begin
 			r_clock_counter <= r_clock_counter - 1'b1;
 		end
-	end
 
-	// DRIVING r_done HIGH FOR ONE TICK WHEN DONE //
-	always @(posedge i_clk) r_done <= 0;
-	always @(negedge r_data[0]) begin
-		if (r_clock_counter == HALF_BAUD_CLK_REG_VALUE) begin
-			r_done <= 1;
+		// DRIVING r_done_signal HIGH FOR ONE TICK WHEN DONE //
+		if (~r_data[0]) begin
+			if (~send_done & r_clock_counter == HALF_BAUD_CLK_REG_VALUE) begin
+				r_done_signal <= 1'b1;
+				r_done_signal_sent <= 1'b1;
+			end
+		end else begin
+			r_done_signal_sent <= 0;
 		end
 	end
 
