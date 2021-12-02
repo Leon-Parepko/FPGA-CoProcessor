@@ -21,28 +21,28 @@ https://fpgasoftware.intel.com/eula.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 216 160)
+	(rect 16 16 288 160)
 	(text "ALU" (rect 5 0 26 12)(font "Arial" ))
 	(text "inst" (rect 8 128 20 140)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
-		(text "op_code[7..0]" (rect 0 0 54 12)(font "Arial" ))
-		(text "op_code[7..0]" (rect 21 27 75 39)(font "Arial" ))
+		(text "i_num_1[bitness-1..0]" (rect 0 0 82 12)(font "Arial" ))
+		(text "i_num_1[bitness-1..0]" (rect 21 27 103 39)(font "Arial" ))
 		(line (pt 0 32)(pt 16 32)(line_width 3))
 	)
 	(port
 		(pt 0 48)
 		(input)
-		(text "num_1[7..0]" (rect 0 0 47 12)(font "Arial" ))
-		(text "num_1[7..0]" (rect 21 43 68 55)(font "Arial" ))
+		(text "i_num_2[bitness-1..0]" (rect 0 0 83 12)(font "Arial" ))
+		(text "i_num_2[bitness-1..0]" (rect 21 43 104 55)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48)(line_width 3))
 	)
 	(port
 		(pt 0 64)
 		(input)
-		(text "num_2[7..0]" (rect 0 0 48 12)(font "Arial" ))
-		(text "num_2[7..0]" (rect 21 59 69 71)(font "Arial" ))
+		(text "op_code[7..0]" (rect 0 0 54 12)(font "Arial" ))
+		(text "op_code[7..0]" (rect 21 59 75 71)(font "Arial" ))
 		(line (pt 0 64)(pt 16 64)(line_width 3))
 	)
 	(port
@@ -55,32 +55,65 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 0 96)
 		(input)
-		(text "i_ready" (rect 0 0 30 12)(font "Arial" ))
-		(text "i_ready" (rect 21 91 51 103)(font "Arial" ))
+		(text "reset" (rect 0 0 20 12)(font "Arial" ))
+		(text "reset" (rect 21 91 41 103)(font "Arial" ))
 		(line (pt 0 96)(pt 16 96)(line_width 1))
 	)
 	(port
 		(pt 0 112)
 		(input)
-		(text "reset" (rect 0 0 20 12)(font "Arial" ))
-		(text "reset" (rect 21 107 41 119)(font "Arial" ))
+		(text "i_ready" (rect 0 0 30 12)(font "Arial" ))
+		(text "i_ready" (rect 21 107 51 119)(font "Arial" ))
 		(line (pt 0 112)(pt 16 112)(line_width 1))
 	)
 	(port
-		(pt 200 32)
+		(pt 272 32)
 		(output)
-		(text "result[7..0]" (rect 0 0 41 12)(font "Arial" ))
-		(text "result[7..0]" (rect 138 27 179 39)(font "Arial" ))
-		(line (pt 200 32)(pt 184 32)(line_width 3))
+		(text "result_Hi[bitness-1..0]" (rect 0 0 83 12)(font "Arial" ))
+		(text "result_Hi[bitness-1..0]" (rect 168 27 251 39)(font "Arial" ))
+		(line (pt 272 32)(pt 256 32)(line_width 3))
 	)
 	(port
-		(pt 200 48)
+		(pt 272 48)
+		(output)
+		(text "result_Lo[bitness-1..0]" (rect 0 0 86 12)(font "Arial" ))
+		(text "result_Lo[bitness-1..0]" (rect 165 43 251 55)(font "Arial" ))
+		(line (pt 272 48)(pt 256 48)(line_width 3))
+	)
+	(port
+		(pt 272 64)
 		(output)
 		(text "o_ready" (rect 0 0 34 12)(font "Arial" ))
-		(text "o_ready" (rect 145 43 179 55)(font "Arial" ))
-		(line (pt 200 48)(pt 184 48)(line_width 1))
+		(text "o_ready" (rect 217 59 251 71)(font "Arial" ))
+		(line (pt 272 64)(pt 256 64)(line_width 1))
 	)
+	(parameter
+		"bitness"
+		"8"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"add"
+		"00000001"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"sub"
+		"00000010"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"mul"
+		"00000011"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"div"
+		"00000100"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
 	(drawing
-		(rectangle (rect 16 16 184 128)(line_width 1))
+		(rectangle (rect 16 16 256 128)(line_width 1))
 	)
+	(annotation_block (parameter)(rect 288 -64 388 16))
 )
