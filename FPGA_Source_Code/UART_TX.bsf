@@ -21,7 +21,7 @@ https://fpgasoftware.intel.com/eula.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 232 128)
+	(rect 16 16 200 128)
 	(text "UART_TX" (rect 5 0 52 12)(font "Arial" ))
 	(text "inst" (rect 8 96 20 108)(font "Arial" ))
 	(port
@@ -34,48 +34,27 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 0 48)
 		(input)
-		(text "nTxResetIN" (rect 0 0 49 12)(font "Arial" ))
-		(text "nTxResetIN" (rect 21 43 70 55)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48)(line_width 1))
+		(text "txDataIN[7..0]" (rect 0 0 55 12)(font "Arial" ))
+		(text "txDataIN[7..0]" (rect 21 43 76 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
 	)
 	(port
 		(pt 0 64)
 		(input)
-		(text "txDataIN[7..0]" (rect 0 0 55 12)(font "Arial" ))
-		(text "txDataIN[7..0]" (rect 21 59 76 71)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64)(line_width 3))
-	)
-	(port
-		(pt 0 80)
-		(input)
 		(text "txLoadIN" (rect 0 0 36 12)(font "Arial" ))
-		(text "txLoadIN" (rect 21 75 57 87)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80)(line_width 1))
+		(text "txLoadIN" (rect 21 59 57 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 1))
 	)
 	(port
-		(pt 216 32)
-		(output)
-		(text "txIdleOUT" (rect 0 0 40 12)(font "Arial" ))
-		(text "txIdleOUT" (rect 155 27 195 39)(font "Arial" ))
-		(line (pt 216 32)(pt 200 32)(line_width 1))
-	)
-	(port
-		(pt 216 48)
-		(output)
-		(text "txReadyOUT" (rect 0 0 55 12)(font "Arial" ))
-		(text "txReadyOUT" (rect 140 43 195 55)(font "Arial" ))
-		(line (pt 216 48)(pt 200 48)(line_width 1))
-	)
-	(port
-		(pt 216 64)
+		(pt 184 32)
 		(output)
 		(text "txOUT" (rect 0 0 27 12)(font "Arial" ))
-		(text "txOUT" (rect 168 59 195 71)(font "Arial" ))
-		(line (pt 216 64)(pt 200 64)(line_width 1))
+		(text "txOUT" (rect 136 27 163 39)(font "Arial" ))
+		(line (pt 184 32)(pt 168 32)(line_width 1))
 	)
 	(parameter
 		"CLOCK_FREQUENCY"
-		"50000000"
+		"10000000"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
@@ -84,7 +63,7 @@ https://fpgasoftware.intel.com/eula.
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 200 96)(line_width 1))
+		(rectangle (rect 16 16 168 96)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 232 -64 332 16))
+	(annotation_block (parameter)(rect 200 -64 300 16))
 )

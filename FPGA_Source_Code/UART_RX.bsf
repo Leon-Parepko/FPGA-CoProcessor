@@ -54,7 +54,7 @@ https://fpgasoftware.intel.com/eula.
 	)
 	(parameter
 		"CLOCK_FREQUENCY"
-		"50000000"
+		"10000000"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
