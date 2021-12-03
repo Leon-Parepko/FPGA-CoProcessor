@@ -73,7 +73,7 @@ https://fpgasoftware.intel.com/eula.
 )
 (pin
 	(output)
-	(rect 1648 1640 1824 1656)
+	(rect 1880 1640 2056 1656)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "Out_rx" (rect 90 0 121 17)(font "Intel Clear" ))
 	(pt 0 8)
@@ -86,7 +86,7 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 1840 1656 1896 1680))
+	(annotation_block (location)(rect 2072 1656 2128 1680))
 )
 (pin
 	(output)
@@ -170,7 +170,7 @@ https://fpgasoftware.intel.com/eula.
 	(annotation_block (parameter)(rect 1080 1544 1336 1608))
 )
 (symbol
-	(rect 1416 1616 1600 1728)
+	(rect 1648 1616 1832 1728)
 	(text "UART_TX" (rect 5 0 52 12)(font "Arial" ))
 	(text "inst4" (rect 8 96 30 113)(font "Intel Clear" ))
 	(port
@@ -214,19 +214,75 @@ https://fpgasoftware.intel.com/eula.
 	(drawing
 		(rectangle (rect 16 16 168 96))
 	)
-	(annotation_block (parameter)(rect 1600 1552 1856 1616))
+	(annotation_block (parameter)(rect 1832 1552 2088 1616))
 )
-(connector
-	(pt 1288 1648)
-	(pt 1400 1648)
+(symbol
+	(rect 1368 1600 1576 1712)
+	(text "DEMUX_1_to_3x8" (rect 5 0 93 12)(font "Arial" ))
+	(text "inst15" (rect 8 96 36 113)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "i_clk" (rect 0 0 22 12)(font "Arial" ))
+		(text "i_clk" (rect 21 27 43 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "i_ready" (rect 0 0 36 12)(font "Arial" ))
+		(text "i_ready" (rect 21 43 57 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "i_data[7..0]" (rect 0 0 55 12)(font "Arial" ))
+		(text "i_data[7..0]" (rect 21 59 76 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "reset" (rect 0 0 24 12)(font "Arial" ))
+		(text "reset" (rect 21 75 45 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 208 32)
+		(output)
+		(text "o_done" (rect 0 0 35 12)(font "Arial" ))
+		(text "o_done" (rect 158 27 193 39)(font "Arial" ))
+		(line (pt 208 32)(pt 192 32))
+	)
+	(port
+		(pt 208 48)
+		(output)
+		(text "o_num_1[7..0]" (rect 0 0 70 12)(font "Arial" ))
+		(text "o_num_1[7..0]" (rect 128 43 198 55)(font "Arial" ))
+		(line (pt 208 48)(pt 192 48)(line_width 3))
+	)
+	(port
+		(pt 208 64)
+		(output)
+		(text "o_num_2[7..0]" (rect 0 0 70 12)(font "Arial" ))
+		(text "o_num_2[7..0]" (rect 128 59 198 71)(font "Arial" ))
+		(line (pt 208 64)(pt 192 64)(line_width 3))
+	)
+	(port
+		(pt 208 80)
+		(output)
+		(text "o_opcode[7..0]" (rect 0 0 73 12)(font "Arial" ))
+		(text "o_opcode[7..0]" (rect 126 75 199 87)(font "Arial" ))
+		(line (pt 208 80)(pt 192 80)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 192 96))
+	)
 )
 (connector
 	(pt 1080 1664)
 	(pt 1064 1664)
-)
-(connector
-	(pt 1344 1504)
-	(pt 1344 1632)
 )
 (connector
 	(pt 1040 1504)
@@ -239,23 +295,6 @@ https://fpgasoftware.intel.com/eula.
 (connector
 	(pt 1064 1664)
 	(pt 1064 1688)
-)
-(connector
-	(pt 1288 1664)
-	(pt 1416 1664)
-	(bus)
-)
-(connector
-	(pt 1416 1680)
-	(pt 1400 1680)
-)
-(connector
-	(pt 1400 1680)
-	(pt 1400 1648)
-)
-(connector
-	(pt 1344 1632)
-	(pt 1416 1632)
 )
 (connector
 	(pt 1032 1648)
@@ -270,11 +309,68 @@ https://fpgasoftware.intel.com/eula.
 	(pt 1040 1688)
 )
 (connector
-	(pt 1416 1632)
-	(pt 1416 1648)
+	(pt 1832 1648)
+	(pt 1880 1648)
 )
 (connector
-	(pt 1600 1648)
+	(pt 1288 1664)
+	(pt 1368 1664)
+	(bus)
+)
+(connector
+	(pt 1648 1680)
+	(pt 1616 1680)
+)
+(connector
+	(pt 1616 1632)
+	(pt 1616 1680)
+)
+(connector
 	(pt 1648 1648)
+	(pt 1640 1648)
+)
+(connector
+	(pt 1640 1544)
+	(pt 1640 1648)
+)
+(connector
+	(pt 1640 1544)
+	(pt 1344 1544)
+)
+(connector
+	(pt 1344 1632)
+	(pt 1368 1632)
+)
+(connector
+	(pt 1344 1504)
+	(pt 1344 1544)
+)
+(connector
+	(pt 1344 1544)
+	(pt 1344 1632)
+)
+(connector
+	(pt 1288 1648)
+	(pt 1368 1648)
+)
+(connector
+	(pt 1576 1632)
+	(pt 1616 1632)
+)
+(connector
+	(pt 1648 1664)
+	(pt 1592 1664)
+	(bus)
+)
+(connector
+	(pt 1592 1664)
+	(pt 1592 1680)
+	(bus)
+)
+(connector
+	(pt 1592 1680)
+	(pt 1576 1680)
+	(bus)
 )
 (junction (pt 1040 1688))
+(junction (pt 1344 1544))
