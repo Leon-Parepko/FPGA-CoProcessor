@@ -17,6 +17,18 @@ module DEMUX_1_to_3x8
 	
 	
 	always @(posedge i_clk) begin
+	
+	
+		if (reset == 1) begin 
+			o_done <=   0;
+			o_num_1 <=  0;
+			o_num_2 <=  0;
+			o_opcode <= 0;
+			counter <=  2'b01;
+			done <=     0;
+		end
+	
+	
 		if (done == 2'b10) done <= 0;
 		if (done == 2'b01) done <= 2'b10;
         

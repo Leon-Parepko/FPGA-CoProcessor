@@ -1,25 +1,23 @@
 module COMPORATOR
 
 #(parameter plus = 	8'b00101011,
-parameter minus = 	8'b00000000,
-parameter multiply = 8'b00000000,
-parameter divide = 	8'b00000000
-)
-
-(op, clk, i_ready, reset, op_code, o_ready);
+parameter minus = 	8'b00101101,
+parameter multiply = 8'b00101010,
+parameter divide = 	8'b00101111
+)	
+(
 	
-	input [7:0] op;
-	input i_ready;
-	input clk;
-	input reset;
+	input i_clk,
+	input i_ready,
+	input [7:0] op,
+	input reset,
 	
-	output [7:0] op_code;
-	output o_ready;
 	
-	reg [7:0] op_code;
-	reg o_ready;
+	output reg o_ready,
+	output reg [7:0] op_code
+);	
 	
-	always @(posedge clk) begin
+	always @(posedge i_clk) begin
 		o_ready = 0;
 		
 		if (reset == 1) begin
@@ -32,22 +30,22 @@ parameter divide = 	8'b00000000
 			
 				plus: begin
 					op_code = 8'b000000001;
-					o_ready = 1'b1;
+					o_ready = 1;
 				end
 				
 				minus: begin
 					op_code = 8'b000000010;
-					o_ready = 1'b1;
+					o_ready = 1;
 				end
 				
 				multiply: begin
 					op_code = 8'b000000011;
-					o_ready = 1'b1;
+					o_ready = 1;
 				end
 				
 				divide: begin
 					op_code = 8'b000000100;
-					o_ready = 1'b1;
+					o_ready = 1;
 				end
 				
 			endcase;

@@ -5,8 +5,8 @@ module UART_TX #
 )
 (
 	input  clockIN,
-	input  [7:0] txDataIN,
 	input  txLoadIN,
+	input  [7:0] txDataIN,
 	output wire txOUT
 );
 

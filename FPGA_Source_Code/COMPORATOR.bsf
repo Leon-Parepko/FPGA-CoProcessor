@@ -27,23 +27,23 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 0 32)
 		(input)
-		(text "op[7..0]" (rect 0 0 29 12)(font "Arial" ))
-		(text "op[7..0]" (rect 21 27 50 39)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32)(line_width 3))
+		(text "i_clk" (rect 0 0 17 12)(font "Arial" ))
+		(text "i_clk" (rect 21 27 38 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 1))
 	)
 	(port
 		(pt 0 48)
 		(input)
-		(text "clk" (rect 0 0 10 12)(font "Arial" ))
-		(text "clk" (rect 21 43 31 55)(font "Arial" ))
+		(text "i_ready" (rect 0 0 30 12)(font "Arial" ))
+		(text "i_ready" (rect 21 43 51 55)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48)(line_width 1))
 	)
 	(port
 		(pt 0 64)
 		(input)
-		(text "i_ready" (rect 0 0 30 12)(font "Arial" ))
-		(text "i_ready" (rect 21 59 51 71)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64)(line_width 1))
+		(text "op[7..0]" (rect 0 0 29 12)(font "Arial" ))
+		(text "op[7..0]" (rect 21 59 50 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
 	)
 	(port
 		(pt 0 80)
@@ -55,16 +55,16 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 184 32)
 		(output)
-		(text "op_code[7..0]" (rect 0 0 54 12)(font "Arial" ))
-		(text "op_code[7..0]" (rect 109 27 163 39)(font "Arial" ))
-		(line (pt 184 32)(pt 168 32)(line_width 3))
+		(text "o_ready" (rect 0 0 34 12)(font "Arial" ))
+		(text "o_ready" (rect 129 27 163 39)(font "Arial" ))
+		(line (pt 184 32)(pt 168 32)(line_width 1))
 	)
 	(port
 		(pt 184 48)
 		(output)
-		(text "o_ready" (rect 0 0 34 12)(font "Arial" ))
-		(text "o_ready" (rect 129 43 163 55)(font "Arial" ))
-		(line (pt 184 48)(pt 168 48)(line_width 1))
+		(text "op_code[7..0]" (rect 0 0 54 12)(font "Arial" ))
+		(text "op_code[7..0]" (rect 109 43 163 55)(font "Arial" ))
+		(line (pt 184 48)(pt 168 48)(line_width 3))
 	)
 	(parameter
 		"plus"
@@ -73,17 +73,17 @@ https://fpgasoftware.intel.com/eula.
 		(type "PARAMETER_UNSIGNED_BIN")	)
 	(parameter
 		"minus"
-		"00000000"
+		"00101101"
 		""
 		(type "PARAMETER_UNSIGNED_BIN")	)
 	(parameter
 		"multiply"
-		"00000000"
+		"00101010"
 		""
 		(type "PARAMETER_UNSIGNED_BIN")	)
 	(parameter
 		"divide"
-		"00000000"
+		"00101111"
 		""
 		(type "PARAMETER_UNSIGNED_BIN")	)
 	(drawing

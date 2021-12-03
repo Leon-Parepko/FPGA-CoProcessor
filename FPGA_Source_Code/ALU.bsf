@@ -27,8 +27,8 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 0 32)
 		(input)
-		(text "clk" (rect 0 0 10 12)(font "Arial" ))
-		(text "clk" (rect 21 27 31 39)(font "Arial" ))
+		(text "i_clk" (rect 0 0 17 12)(font "Arial" ))
+		(text "i_clk" (rect 21 27 38 39)(font "Arial" ))
 		(line (pt 0 32)(pt 16 32)(line_width 1))
 	)
 	(port
@@ -69,23 +69,23 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 272 32)
 		(output)
-		(text "result_Hi[bitness-1..0]" (rect 0 0 83 12)(font "Arial" ))
-		(text "result_Hi[bitness-1..0]" (rect 168 27 251 39)(font "Arial" ))
-		(line (pt 272 32)(pt 256 32)(line_width 3))
+		(text "o_ready" (rect 0 0 34 12)(font "Arial" ))
+		(text "o_ready" (rect 217 27 251 39)(font "Arial" ))
+		(line (pt 272 32)(pt 256 32)(line_width 1))
 	)
 	(port
 		(pt 272 48)
 		(output)
-		(text "result_Lo[bitness-1..0]" (rect 0 0 86 12)(font "Arial" ))
-		(text "result_Lo[bitness-1..0]" (rect 165 43 251 55)(font "Arial" ))
+		(text "result_Hi[bitness-1..0]" (rect 0 0 83 12)(font "Arial" ))
+		(text "result_Hi[bitness-1..0]" (rect 168 43 251 55)(font "Arial" ))
 		(line (pt 272 48)(pt 256 48)(line_width 3))
 	)
 	(port
 		(pt 272 64)
 		(output)
-		(text "o_ready" (rect 0 0 34 12)(font "Arial" ))
-		(text "o_ready" (rect 217 59 251 71)(font "Arial" ))
-		(line (pt 272 64)(pt 256 64)(line_width 1))
+		(text "result_Lo[bitness-1..0]" (rect 0 0 86 12)(font "Arial" ))
+		(text "result_Lo[bitness-1..0]" (rect 165 59 251 71)(font "Arial" ))
+		(line (pt 272 64)(pt 256 64)(line_width 3))
 	)
 	(parameter
 		"bitness"
@@ -94,7 +94,7 @@ https://fpgasoftware.intel.com/eula.
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
 		"add"
-		"00101011"
+		"00000001"
 		""
 		(type "PARAMETER_UNSIGNED_BIN")	)
 	(parameter

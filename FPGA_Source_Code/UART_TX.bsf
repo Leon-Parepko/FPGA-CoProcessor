@@ -34,16 +34,16 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 0 48)
 		(input)
-		(text "txDataIN[7..0]" (rect 0 0 55 12)(font "Arial" ))
-		(text "txDataIN[7..0]" (rect 21 43 76 55)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48)(line_width 3))
+		(text "txLoadIN" (rect 0 0 36 12)(font "Arial" ))
+		(text "txLoadIN" (rect 21 43 57 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 1))
 	)
 	(port
 		(pt 0 64)
 		(input)
-		(text "txLoadIN" (rect 0 0 36 12)(font "Arial" ))
-		(text "txLoadIN" (rect 21 59 57 71)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64)(line_width 1))
+		(text "txDataIN[7..0]" (rect 0 0 55 12)(font "Arial" ))
+		(text "txDataIN[7..0]" (rect 21 59 76 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
 	)
 	(port
 		(pt 184 32)
