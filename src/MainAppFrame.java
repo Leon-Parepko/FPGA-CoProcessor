@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.stream.Collectors;
-import Compiler.*;
+import Compiler.Compiler.*;
 
 
 public class MainAppFrame extends JFrame {
@@ -37,6 +37,7 @@ public class MainAppFrame extends JFrame {
     private JButton OpenButton;
     private JButton ClearButton;
     private JLabel BitrateLabel;
+    private JCheckBox compileCheckBox;
 
     SerialPort CurrentPort = null;
 
@@ -48,8 +49,6 @@ public class MainAppFrame extends JFrame {
 
     public MainAppFrame(String title) {
         super(title);
-
-        Compiler Compiler = new Compiler();
 
         this.setContentPane(MainPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -157,8 +156,10 @@ public class MainAppFrame extends JFrame {
         SendMessage.addActionListener(e -> {
             try {
                 OutputStream outputStream = CurrentPort.getOutputStream();
-                Compiler.Compile(InputText.getText());
-                outputStream.write(InputText.getText().getBytes(StandardCharsets.UTF_8));
+
+                if (compileCheckBox.isSelected()) Compiler.Compile(InputText.getText());
+                else outputStream.write(InputText.getText().getBytes(StandardCharsets.UTF_8));
+
             } catch (ArrayIndexOutOfBoundsException | IOException a) {
                 trace("Could not send data!");
             } catch (NullPointerException a) {

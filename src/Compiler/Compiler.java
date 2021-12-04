@@ -3,47 +3,91 @@ package Compiler;
 public class Compiler {
 
 
-    public void Compile(String str){
-        String divRef = "+-*/^", nums = "1234567890";
-        int num_counter = 0;
-        StringBuilder num1 = null, num2 = null, op = null;
+    public static String Compile(String str) {
+
+        String op_ref = "+-*/^", num_ref = "1234567890", delim_ref = ";", mat_op_ref = "ASCDd";       // Add, Subtract, Cross, Dot, determinant
+        StringBuilder num1 = new StringBuilder(), num2 = new StringBuilder(), Instruction = new StringBuilder();
+        int instruct_counter = 1;
+        Integer op = 0;
         boolean op_flag = false;
 
-        for (char sym : str.toCharArray()){
-            if (nums.matches(String.valueOf(sym))){
-                System.out.println(sym);
-                if (!op_flag){num1.append(sym);}
-                else if (op_flag){num2.append(sym);}
-
-            }
-
-            else if (divRef.matches(String.valueOf(sym))){
-                op.append(sym);
-                op_flag = true;
-            }
-
-//            Integer.parseInt(String.valueOf(num1));
 
 
+        try {
 
-//            char divider = 0;
-//            for (char div : divRef){
-//                if (ch == div) {
-//                    divider = ch;
-//                    break;
+            for (Character sym : str.toCharArray()) {
+
+//                if (num1 != null && num2 != null) {
+//                    if (Integer.parseInt(String.valueOf(num1)) >= 255 || Integer.parseInt(String.valueOf(num2)) >= 255) {
+//                        throw new NumberSizeLimitException(" line: " + instruct_counter);
+//                    }
 //                }
-//            }
-//            if(divider == 0){
-//
-//            }else {
-//
-//            }
+
+//          NUMS
+                if (num_ref.contains(String.valueOf(sym))) {
+                    if (!op_flag) {
+                        num1.append(sym);
+                    }
+
+                    else if (op_flag) {
+                        num2.append(sym);
+                    }
+                }
+
+//          OPERATIONS
+                else if (op_ref.contains(String.valueOf(sym))) {
+
+                    switch (sym) {
+                        case ('+'):
+                            op = 1;
+                        case ('-'):
+                            op = 10;
+                        case ('*'):
+                            op = 11;
+                        case ('/'):
+                            op = 100;
+                    }
+
+                    op_flag = true;
+                }
+
+
+//          DELIMITERS
+                else if (delim_ref.contains(String.valueOf(sym))) {
+                    Instruction.append(String.format("%08d", Integer.parseInt(Integer.toBinaryString(Integer.parseInt(String.valueOf(num1))))) + " ");
+                    Instruction.append(String.format("%08d", Integer.parseInt(Integer.toBinaryString(Integer.parseInt(String.valueOf(num2))))) + " ");
+                    Instruction.append(Integer.toBinaryString(op) + " # ");
+                    instruct_counter ++;
+                    op_flag = false;
+                    num1.delete(0, num1.length());
+                    num2.delete(0, num2.length());
+                    op = 0;
+                }
+
+                else{
+                    throw new ImproperSymbolException(sym + " line:" + instruct_counter);
+                }
+            }
+
+            return String.valueOf(Instruction);
+
         }
 
-        System.out.println(Byte.valueOf(String.valueOf(num1)));
-
-
+        catch (Exception e){
+            return "Compilatin error: " + e.getClass() + '"' + e.getMessage() + '"';
+        }
     }
 
 
+
+
+//    ---------------------CUSTOM ERRORS-------------------------
+
+    private static class ImproperSymbolException extends Exception {
+        public ImproperSymbolException(String massage) {super(massage);}
+    }
+
+    private static class NumberSizeLimitException extends Exception {
+        public NumberSizeLimitException(String massage) {super(massage);}
+    }
 }
