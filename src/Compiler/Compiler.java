@@ -1,5 +1,10 @@
 package Compiler;
 
+////////////////////////////////////////////
+//// Test String  1+2;2-3;4*5;6/7;
+//// Change output format (" # ")
+////////////////////////////////////////////
+
 public class Compiler {
 
 
@@ -40,12 +45,16 @@ public class Compiler {
                     switch (sym) {
                         case ('+'):
                             op = 1;
+                            break;
                         case ('-'):
-                            op = 10;
+                            op = 2;
+                            break;
                         case ('*'):
-                            op = 11;
+                            op = 3;
+                            break;
                         case ('/'):
-                            op = 100;
+                            op = 4;
+                            break;
                     }
 
                     op_flag = true;
@@ -56,7 +65,7 @@ public class Compiler {
                 else if (delim_ref.contains(String.valueOf(sym))) {
                     Instruction.append(String.format("%08d", Integer.parseInt(Integer.toBinaryString(Integer.parseInt(String.valueOf(num1))))) + " ");
                     Instruction.append(String.format("%08d", Integer.parseInt(Integer.toBinaryString(Integer.parseInt(String.valueOf(num2))))) + " ");
-                    Instruction.append(Integer.toBinaryString(op) + " # ");
+                    Instruction.append(String.format("%08d", Integer.parseInt(Integer.toBinaryString(op))) + " # ");
                     instruct_counter ++;
                     op_flag = false;
                     num1.delete(0, num1.length());
@@ -68,9 +77,7 @@ public class Compiler {
                     throw new ImproperSymbolException(sym + " line:" + instruct_counter);
                 }
             }
-
             return String.valueOf(Instruction);
-
         }
 
         catch (Exception e){
