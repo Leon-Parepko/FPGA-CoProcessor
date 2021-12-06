@@ -21,9 +21,9 @@ https://fpgasoftware.intel.com/eula.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 200 128)
-	(text "COMPORATOR" (rect 5 0 78 12)(font "Arial" ))
-	(text "inst" (rect 8 96 20 108)(font "Arial" ))
+	(rect 16 16 288 192)
+	(text "MALU" (rect 5 0 34 12)(font "Arial" ))
+	(text "inst" (rect 8 160 20 172)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -41,90 +41,108 @@ https://fpgasoftware.intel.com/eula.
 	(port
 		(pt 0 64)
 		(input)
-		(text "op[7..0]" (rect 0 0 29 12)(font "Arial" ))
-		(text "op[7..0]" (rect 21 59 50 71)(font "Arial" ))
+		(text "size_1[bitness-1..0]" (rect 0 0 71 12)(font "Arial" ))
+		(text "size_1[bitness-1..0]" (rect 21 59 92 71)(font "Arial" ))
 		(line (pt 0 64)(pt 16 64)(line_width 3))
 	)
 	(port
 		(pt 0 80)
 		(input)
-		(text "reset" (rect 0 0 20 12)(font "Arial" ))
-		(text "reset" (rect 21 75 41 87)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80)(line_width 1))
+		(text "size_2[bitness-1..0]" (rect 0 0 73 12)(font "Arial" ))
+		(text "size_2[bitness-1..0]" (rect 21 75 94 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 3))
 	)
 	(port
-		(pt 184 32)
+		(pt 0 96)
+		(input)
+		(text "i_mat_1[bitness-1..0]" (rect 0 0 80 12)(font "Arial" ))
+		(text "i_mat_1[bitness-1..0]" (rect 21 91 101 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "i_mat_2[bitness-1..0]" (rect 0 0 81 12)(font "Arial" ))
+		(text "i_mat_2[bitness-1..0]" (rect 21 107 102 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "op_code[7..0]" (rect 0 0 54 12)(font "Arial" ))
+		(text "op_code[7..0]" (rect 21 123 75 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128)(line_width 3))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "reset" (rect 0 0 20 12)(font "Arial" ))
+		(text "reset" (rect 21 139 41 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144)(line_width 1))
+	)
+	(port
+		(pt 272 32)
 		(output)
 		(text "o_ready" (rect 0 0 34 12)(font "Arial" ))
-		(text "o_ready" (rect 129 27 163 39)(font "Arial" ))
-		(line (pt 184 32)(pt 168 32)(line_width 1))
+		(text "o_ready" (rect 217 27 251 39)(font "Arial" ))
+		(line (pt 272 32)(pt 256 32)(line_width 1))
 	)
 	(port
-		(pt 184 48)
+		(pt 272 48)
 		(output)
-		(text "o_ready_mat" (rect 0 0 55 12)(font "Arial" ))
-		(text "o_ready_mat" (rect 108 43 163 55)(font "Arial" ))
-		(line (pt 184 48)(pt 168 48)(line_width 1))
+		(text "result_Hi[bitness-1..0]" (rect 0 0 83 12)(font "Arial" ))
+		(text "result_Hi[bitness-1..0]" (rect 168 43 251 55)(font "Arial" ))
+		(line (pt 272 48)(pt 256 48)(line_width 3))
 	)
 	(port
-		(pt 184 64)
+		(pt 272 64)
 		(output)
-		(text "op_code[7..0]" (rect 0 0 54 12)(font "Arial" ))
-		(text "op_code[7..0]" (rect 109 59 163 71)(font "Arial" ))
-		(line (pt 184 64)(pt 168 64)(line_width 3))
+		(text "result_Lo[bitness-1..0]" (rect 0 0 86 12)(font "Arial" ))
+		(text "result_Lo[bitness-1..0]" (rect 165 59 251 71)(font "Arial" ))
+		(line (pt 272 64)(pt 256 64)(line_width 3))
 	)
 	(parameter
-		"plus"
-		"00101011"
+		"bitness"
+		"8"
 		""
-		(type "PARAMETER_UNSIGNED_BIN")	)
+		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
-		"minus"
-		"00101101"
-		""
-		(type "PARAMETER_UNSIGNED_BIN")	)
-	(parameter
-		"multiply"
-		"00101010"
-		""
-		(type "PARAMETER_UNSIGNED_BIN")	)
-	(parameter
-		"divide"
-		"00101111"
-		""
-		(type "PARAMETER_UNSIGNED_BIN")	)
-	(parameter
-		"mat_plus"
+		"add"
 		"00000000"
 		""
 		(type "PARAMETER_UNSIGNED_BIN")	)
 	(parameter
-		"mat_minus"
+		"sub"
 		"00000000"
 		""
 		(type "PARAMETER_UNSIGNED_BIN")	)
 	(parameter
-		"mat_cross"
+		"dot"
 		"00000000"
 		""
 		(type "PARAMETER_UNSIGNED_BIN")	)
 	(parameter
-		"mat_dot"
+		"cross"
 		"00000000"
 		""
 		(type "PARAMETER_UNSIGNED_BIN")	)
 	(parameter
-		"mat_det"
+		"muli"
 		"00000000"
 		""
 		(type "PARAMETER_UNSIGNED_BIN")	)
 	(parameter
-		"mat_trans"
+		"det"
+		"00000000"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"trans"
 		"00000000"
 		""
 		(type "PARAMETER_UNSIGNED_BIN")	)
 	(drawing
-		(rectangle (rect 16 16 168 96)(line_width 1))
+		(rectangle (rect 16 16 256 160)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 200 -64 300 16))
+	(annotation_block (parameter)(rect 288 -64 388 16))
 )

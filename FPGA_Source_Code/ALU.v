@@ -1,6 +1,4 @@
 
-//bitness = your_bitness - 1
-
 module ALU
 #(parameter bitness = 8,
 parameter add = 8'b00000001,

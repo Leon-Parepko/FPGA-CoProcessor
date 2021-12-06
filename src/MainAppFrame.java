@@ -157,7 +157,8 @@ public class MainAppFrame extends JFrame {
             try {
                 OutputStream outputStream = CurrentPort.getOutputStream();
 
-                if (compileCheckBox.isSelected()) Compiler.Compile(InputText.getText());
+                if (compileCheckBox.isSelected()){ Compiler.Compile(InputText.getText());
+                    System.out.println(Compiler.Compile(InputText.getText()));}
                 else outputStream.write(InputText.getText().getBytes(StandardCharsets.UTF_8));
 
             } catch (ArrayIndexOutOfBoundsException | IOException a) {

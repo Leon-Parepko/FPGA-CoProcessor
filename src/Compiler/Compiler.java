@@ -43,18 +43,10 @@ public class Compiler {
                 else if (op_ref.contains(String.valueOf(sym))) {
 
                     switch (sym) {
-                        case ('+'):
-                            op = 1;
-                            break;
-                        case ('-'):
-                            op = 2;
-                            break;
-                        case ('*'):
-                            op = 3;
-                            break;
-                        case ('/'):
-                            op = 4;
-                            break;
+                        case ('+') -> op = 1;
+                        case ('-') -> op = 2;
+                        case ('*') -> op = 3;
+                        case ('/') -> op = 4;
                     }
 
                     op_flag = true;
@@ -63,9 +55,9 @@ public class Compiler {
 
 //          DELIMITERS
                 else if (delim_ref.contains(String.valueOf(sym))) {
-                    Instruction.append(String.format("%08d", Integer.parseInt(Integer.toBinaryString(Integer.parseInt(String.valueOf(num1))))) + " ");
-                    Instruction.append(String.format("%08d", Integer.parseInt(Integer.toBinaryString(Integer.parseInt(String.valueOf(num2))))) + " ");
-                    Instruction.append(String.format("%08d", Integer.parseInt(Integer.toBinaryString(op))) + " # ");
+                    Instruction.append(String.format("%08d", Integer.parseInt(Integer.toBinaryString(Integer.parseInt(String.valueOf(num1)))))).append(" ");
+                    Instruction.append(String.format("%08d", Integer.parseInt(Integer.toBinaryString(Integer.parseInt(String.valueOf(num2)))))).append(" ");
+                    Instruction.append(String.format("%08d", Integer.parseInt(Integer.toBinaryString(op)))).append(" # ");
                     instruct_counter ++;
                     op_flag = false;
                     num1.delete(0, num1.length());

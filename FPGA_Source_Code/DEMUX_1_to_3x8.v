@@ -2,7 +2,9 @@ module DEMUX_1_to_3x8
 (
    input i_clk,
 	input i_ready,
+//	input i_mat_ready,
    input [7:0] i_data,
+//	input [7:0] write_mat_type,
    input reset,
 
 	 
