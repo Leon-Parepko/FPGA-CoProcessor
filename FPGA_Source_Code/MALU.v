@@ -27,6 +27,9 @@ parameter trans = 8'b00000000
 );
 
 
+//reg [800:0] matrix				//input matrix (max 5X5 * 32 bit)
+
+
 
 	
 	always @(posedge i_clk) begin

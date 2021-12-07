@@ -13,44 +13,41 @@ module MATRIX_WRITE_DATA
 	input [7:0] size_y,
 	input reset,
 	
-	output reg o_done,	
-	output reg [7:0] write_mat_type		//type - size_x X size_y    1-2X2, 2-3X3, 3-4X4, 4-5X5, 5-2X0, 6-3X0, 7-4X0, 8-5X0
-);	
+	output wire o_done,	
+	output wire [7:0] mat_data_len		//type - size_x X size_y    1-2X2, 2-3X3, 3-4X4, 4-5X5, 5-2X0, 6-3X0, 7-4X0, 8-5X0
+);
+
+
+wire o_done_1 = 0;
+wire o_done_2 = 1;
+integer data_len = 0;
+
+assign o_done = 	o_done_1 && o_done_2;
+assign mat_data_len = data_len;
 
 	
 	always @(posedge i_ready) begin
 		
 		
 		if (size_y == 0) begin
-			write_mat_type = size_x + 3;		// it would not be 8 bits (change)
+			data_len = (size_x ** 2) *2;
 		end
 		
 		else begin
-			write_mat_type = size_x - 1;
+			data_len = (size_x ** 2) + 1;
 		end
 		
-		o_done = 1;
-			
-			
+		
 	end
 	
 	
 	
 	
-	
-//	always @(negedge i_ready) begin
-//	o_done = 0;
+//	always @(posedge reset) begin
+//			data_len = 0; 
 //	end
 	
 	
-	
-	
-//	always @(posedge reset) begin
-//	
-//			o_done = 		0;
-//			write_mat_type = 0; 
-//			
-//			end
 			
 			
 endmodule

@@ -90,3 +90,10 @@ public class Compiler {
         public NumberSizeLimitException(String massage) {super(massage);}
     }
 }
+
+
+
+class test {
+    public test(String str){}
+    String str;
+}

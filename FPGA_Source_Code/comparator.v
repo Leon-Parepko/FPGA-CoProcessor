@@ -67,27 +67,27 @@ parameter mat_trans = 	8'b00000000
 				end
 				
 				mat_minus: begin
-					op_code = 8'b000000000;
+					op_code <= 8'b000000000;
 					o_ready_mat = 1;
 				end
 				
 				mat_cross: begin
-					op_code = 8'b000000000;
+					op_code <= 8'b000000000;
 					o_ready_mat = 1;
 				end
 				
 				mat_dot: begin
-					op_code = 8'b000000000;
+					op_code <= 8'b000000000;
 					o_ready_mat = 1;
 				end
 				
 				mat_det: begin
-					op_code = 8'b000000000;
+					op_code <= 8'b000000000;
 					o_ready_mat = 1;
 				end
 				
 				mat_trans: begin
-					op_code = 8'b000000000;
+					op_code <= 8'b000000000;
 					o_ready_mat = 1;
 				end
 	

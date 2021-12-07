@@ -2,9 +2,7 @@ module DEMUX_1_to_3x8
 (
    input i_clk,
 	input i_ready,
-//	input i_mat_ready,
    input [7:0] i_data,
-//	input [7:0] write_mat_type,
    input reset,
 
 	 
@@ -14,8 +12,9 @@ module DEMUX_1_to_3x8
    output reg [7:0] o_opcode
 );
 
-   reg [1:0] counter = 2'b01;	
+   reg [1:0] counter = 1;	
 	reg [1:0] done = 0;
+
 	
 	
 	always @(posedge i_clk) begin
@@ -26,29 +25,29 @@ module DEMUX_1_to_3x8
 			o_num_1 <=  0;
 			o_num_2 <=  0;
 			o_opcode <= 0;
-			counter <=  2'b01;
+			counter <=  1;
 			done <=     0;
 		end
 	
-	
-		if (done == 2'b10) done <= 0;
-		if (done == 2'b01) done <= 2'b10;
+		
+		if (done == 2) done <= 0;
+		if (done == 1) done <= 2;
         
 		if (i_ready == 1) begin
 			case (counter)
-				2'b01: begin
+				1: begin
 					o_num_1 <= i_data;
-					counter <= 2'b10;
+					counter <= 2;
 				end
-				2'b10: begin
+				2: begin
 					o_num_2 <= i_data;
-					counter <= 2'b11;
+					counter <= 3;
 				end
-				2'b11: begin
-					counter <= 2'b01;
+				3: begin
+					counter <= 1;
 
 					o_opcode <= i_data;
-					done <= 2'b01;
+					done <= 1;
 				end
 			endcase
 		end

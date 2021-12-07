@@ -21,7 +21,7 @@ https://fpgasoftware.intel.com/eula.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 248 128)
+	(rect 16 16 240 128)
 	(text "MATRIX_WRITE_DATA" (rect 5 0 119 12)(font "Arial" ))
 	(text "inst" (rect 8 96 20 108)(font "Arial" ))
 	(port
@@ -53,20 +53,20 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 0 80)(pt 16 80)(line_width 1))
 	)
 	(port
-		(pt 232 32)
+		(pt 224 32)
 		(output)
 		(text "o_done" (rect 0 0 29 12)(font "Arial" ))
-		(text "o_done" (rect 182 27 211 39)(font "Arial" ))
-		(line (pt 232 32)(pt 216 32)(line_width 1))
+		(text "o_done" (rect 174 27 203 39)(font "Arial" ))
+		(line (pt 224 32)(pt 208 32)(line_width 1))
 	)
 	(port
-		(pt 232 48)
+		(pt 224 48)
 		(output)
-		(text "write_mat_type[7..0]" (rect 0 0 82 12)(font "Arial" ))
-		(text "write_mat_type[7..0]" (rect 129 43 211 55)(font "Arial" ))
-		(line (pt 232 48)(pt 216 48)(line_width 3))
+		(text "mat_data_len[7..0]" (rect 0 0 74 12)(font "Arial" ))
+		(text "mat_data_len[7..0]" (rect 129 43 203 55)(font "Arial" ))
+		(line (pt 224 48)(pt 208 48)(line_width 3))
 	)
 	(drawing
-		(rectangle (rect 16 16 216 96)(line_width 1))
+		(rectangle (rect 16 16 208 96)(line_width 1))
 	)
 )
